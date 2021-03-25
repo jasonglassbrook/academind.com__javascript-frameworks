@@ -1,0 +1,21 @@
+# Environments
+
+[Ee][Nn][Vv]
+[Ee][Nn][Vv].[Bb][Aa][Kk]
+.[Ee][Nn][Vv]
+.[Ee][Nn][Vv].[Bb][Aa][Kk]
+[Vv][Ee][Nn][Vv]
+[Vv][Ee][Nn][Vv].[Bb][Aa][Kk]
+.[Vv][Ee][Nn][Vv]
+.[Vv][Ee][Nn][Vv].[Bb][Aa][Kk]
+
+# Temporary, Local, and SECRET Items
+
+temp.*
+temp/
+
+local.*
+local/
+
+SECRET.*
+SECRET/
