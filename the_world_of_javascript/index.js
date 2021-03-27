@@ -24,7 +24,7 @@ function addTodoItem(event) {
   }
   // Create new todo item data and add it to todo list data.
   const newTodoItem = {
-    id: Math.random() /* not truly unique, but it'll do for now */,
+    id: uniqueId(),
     text: newTodoText,
   };
   // console.log(newTodoItem);
@@ -41,7 +41,7 @@ function addTodoItem(event) {
 function removeTodoItem(event) {
   // Get todo item.
   const clickedTodoItemElem = event.target;
-  const clickedTodoItemId = Number(clickedTodoItemElem.dataset.id);
+  const clickedTodoItemId = clickedTodoItemElem.dataset.id;
   const clickedParentElem = clickedTodoItemElem.parentNode;
   // Remove todo item from todo list data and element.
   const clickedTodoItemIndex = todoList.findIndex(
@@ -51,4 +51,8 @@ function removeTodoItem(event) {
   todoList.splice(clickedTodoItemIndex, 1);
   // console.log(todoList);
   clickedParentElem.removeChild(clickedTodoItemElem);
+}
+
+function uniqueId() {
+  return Math.random().toString(); /* not truly unique, but it'll do for now */
 }
