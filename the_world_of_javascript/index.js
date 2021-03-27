@@ -54,5 +54,7 @@ function removeTodoItem(event) {
 }
 
 function uniqueId() {
-  return Math.random().toString(); /* not truly unique, but it'll do for now */
+  const timestamp = Date.now().toString();
+  const randomDecimals = Math.random().toFixed(18).slice(1);
+  return `${timestamp}${randomDecimals}`; /* this should be unique */
 }
