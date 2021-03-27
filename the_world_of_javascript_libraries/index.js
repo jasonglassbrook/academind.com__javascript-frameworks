@@ -6,19 +6,19 @@ const todoList = [];
 
 // Access elements.
 
-const addTodoTextElem = document.querySelector(`input#add-todo-text`);
-const addTodoButtonElem = document.querySelector(`button#add-todo-button`);
-const todoListElem = document.querySelector(`ul#todo-list`);
+const addTodoTextElem = $(`input#add-todo-text`);
+const addTodoButtonElem = $(`button#add-todo-button`);
+const todoListElem = $(`ul#todo-list`);
 
 // Add event listeners.
 
-addTodoButtonElem.addEventListener("click", addTodo);
+addTodoButtonElem.click(addTodo);
 
 // Define event actions.
 
 function addTodo(event) {
   // Get user input.
-  const newTodoText = addTodoTextElem.value.trim();
+  const newTodoText = addTodoTextElem.val().trim();
   if (newTodoText.length === 0) {
     return;
   }
@@ -31,18 +31,16 @@ function addTodo(event) {
   todoList.push(newTodo);
   // console.log(todoList);
   // Create new todo item element and add it to todo list element.
-  const newTodoElem = document.createElement("li");
-  newTodoElem.textContent = newTodo.text;
-  newTodoElem.dataset.id = newTodo.id;
-  newTodoElem.addEventListener("click", removeTodo);
-  todoListElem.appendChild(newTodoElem);
+  $(`<li>${newTodo.text}</li>`)
+    .appendTo(todoListElem)
+    .attr("dataset-id", newTodo.id)
+    .click(removeTodo);
 }
 
 function removeTodo(event) {
   // Get todo item.
-  const clickedTodoElem = event.target;
-  const clickedTodoId = clickedTodoElem.dataset.id;
-  const clickedParentElem = clickedTodoElem.parentNode;
+  const clickedTodoElem = $(this);
+  const clickedTodoId = clickedTodoElem.attr("dataset-id");
   // Remove todo item from todo list data and element.
   const clickedTodoIndex = todoList.findIndex(
     (item) => item.id === clickedTodoId
@@ -50,7 +48,7 @@ function removeTodo(event) {
   // console.log(clickedTodoIndex);
   todoList.splice(clickedTodoIndex, 1);
   // console.log(todoList);
-  clickedParentElem.removeChild(clickedTodoElem);
+  clickedTodoElem.remove();
 }
 
 function uniqueId() {
