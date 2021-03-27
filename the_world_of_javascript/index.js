@@ -12,45 +12,45 @@ const todoListElem = document.querySelector(`ul#todo-list`);
 
 // Add event listeners.
 
-addTodoButtonElem.addEventListener("click", addTodoItem);
+addTodoButtonElem.addEventListener("click", addTodo);
 
 // Define event actions.
 
-function addTodoItem(event) {
+function addTodo(event) {
   // Get user input.
   const newTodoText = addTodoTextElem.value.trim();
   if (newTodoText.length === 0) {
     return;
   }
   // Create new todo item data and add it to todo list data.
-  const newTodoItem = {
+  const newTodo = {
     id: uniqueId(),
     text: newTodoText,
   };
-  // console.log(newTodoItem);
-  todoList.push(newTodoItem);
+  // console.log(newTodo);
+  todoList.push(newTodo);
   // console.log(todoList);
   // Create new todo item element and add it to todo list element.
-  const newTodoItemElem = document.createElement("li");
-  newTodoItemElem.textContent = newTodoItem.text;
-  newTodoItemElem.dataset.id = newTodoItem.id;
-  newTodoItemElem.addEventListener("click", removeTodoItem);
-  todoListElem.appendChild(newTodoItemElem);
+  const newTodoElem = document.createElement("li");
+  newTodoElem.textContent = newTodo.text;
+  newTodoElem.dataset.id = newTodo.id;
+  newTodoElem.addEventListener("click", removeTodo);
+  todoListElem.appendChild(newTodoElem);
 }
 
-function removeTodoItem(event) {
+function removeTodo(event) {
   // Get todo item.
-  const clickedTodoItemElem = event.target;
-  const clickedTodoItemId = clickedTodoItemElem.dataset.id;
-  const clickedParentElem = clickedTodoItemElem.parentNode;
+  const clickedTodoElem = event.target;
+  const clickedTodoId = clickedTodoElem.dataset.id;
+  const clickedParentElem = clickedTodoElem.parentNode;
   // Remove todo item from todo list data and element.
-  const clickedTodoItemIndex = todoList.findIndex(
-    (item) => item.id === clickedTodoItemId
+  const clickedTodoIndex = todoList.findIndex(
+    (item) => item.id === clickedTodoId
   );
-  // console.log(clickedTodoItemIndex);
-  todoList.splice(clickedTodoItemIndex, 1);
+  // console.log(clickedTodoIndex);
+  todoList.splice(clickedTodoIndex, 1);
   // console.log(todoList);
-  clickedParentElem.removeChild(clickedTodoItemElem);
+  clickedParentElem.removeChild(clickedTodoElem);
 }
 
 function uniqueId() {
