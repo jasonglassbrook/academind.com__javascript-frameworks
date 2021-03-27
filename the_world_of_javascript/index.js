@@ -1,5 +1,9 @@
 "use strict";
 
+// Define data.
+
+const todoList = [];
+
 // Access elements.
 
 const addTodoTextElem = document.querySelector(`input#add-todo-text`);
@@ -13,18 +17,38 @@ addTodoButtonElem.addEventListener("click", addTodoItem);
 // Define event actions.
 
 function addTodoItem(event) {
+  // Get user input.
   const newTodoText = addTodoTextElem.value.trim();
   if (newTodoText.length === 0) {
     return;
   }
+  // Create new todo item data and add it to todo list data.
+  const newTodoItem = {
+    id: Math.random() /* not truly unique, but it'll do for now */,
+    text: newTodoText,
+  };
+  // console.log(newTodoItem);
+  todoList.push(newTodoItem);
+  // console.log(todoList);
+  // Create new todo item element and add it to todo list element.
   const newTodoItemElem = document.createElement("li");
-  newTodoItemElem.textContent = newTodoText;
-  newTodoItemElem.addEventListener("click", removeTodoItem);;
+  newTodoItemElem.textContent = newTodoItem.text;
+  newTodoItemElem.dataset.id = newTodoItem.id;
+  newTodoItemElem.addEventListener("click", removeTodoItem);
   todoListElem.appendChild(newTodoItemElem);
 }
 
 function removeTodoItem(event) {
-  const clickedTodoItem = event.target;
-  const clickedParentElem = clickedTodoItem.parentNode;
-  clickedParentElem.removeChild(clickedTodoItem);
+  // Get todo item.
+  const clickedTodoItemElem = event.target;
+  const clickedTodoItemId = Number(clickedTodoItemElem.dataset.id);
+  const clickedParentElem = clickedTodoItemElem.parentNode;
+  // Remove todo item from todo list data and element.
+  const clickedTodoItemIndex = todoList.findIndex(
+    (item) => item.id === clickedTodoItemId
+  );
+  // console.log(clickedTodoItemIndex);
+  todoList.splice(clickedTodoItemIndex, 1);
+  // console.log(todoList);
+  clickedParentElem.removeChild(clickedTodoItemElem);
 }
