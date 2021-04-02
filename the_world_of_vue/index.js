@@ -11,10 +11,16 @@ const initial = {
 };
 
 Vue.component("app-greeter", {
-  data: () => ({
-    username: initial.name.split(/\W+/g)[0],
-  }),
-  template: `<p>Hello, {{ username }}!</p>`,
+  props: {
+    username: {
+      type: String,
+      default: firstWord(initial.name),
+    },
+  },
+  methods: {
+    firstWord,
+  },
+  template: `<p>Hello, {{ firstWord(username) }}!</p>`,
 });
 
 new Vue({
@@ -54,6 +60,10 @@ function removeItem(item) {
 /***************************************
   Tools
 ***************************************/
+
+function firstWord(s) {
+  return s.split(/\W+/g)[0];
+}
 
 function reverseName(s) {
   return toTitleCase(reverseString(s));
