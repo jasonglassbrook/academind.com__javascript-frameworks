@@ -6,16 +6,22 @@
 
 const initial = {
   name: "Jason Glassbrook",
+  itemList: [],
+  itemCounter: 0,
 };
 
 new Vue({
   el: "#app",
   data: {
     initial,
-    name: initial.name,
+    name: R.clone(initial.name),
+    itemList: R.clone(initial.itemList),
+    itemCounter: R.clone(initial.itemCounter),
   },
   methods: {
     changeName,
+    addItem,
+    removeItem,
   },
 });
 
@@ -27,7 +33,15 @@ function changeName() {
   this.name = reverseName(this.name);
 }
 
-function addElement() {}
+function addItem() {
+  this.itemCounter += 1;
+  this.itemList.push(this.itemCounter);
+}
+
+function removeItem(item) {
+  const itemIndex = this.itemList.indexOf(item);
+  this.itemList.splice(itemIndex, 1);
+}
 
 /***************************************
   Tools

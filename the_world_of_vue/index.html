@@ -37,11 +37,13 @@
         <p v-if="name != initial.name">You changed the name!</p>
       </div>
 
-      <div id="element-adder">
-        <button v-on:click="addElement">New Element</button>
+      <div id="item-lister">
+        <button v-on:click="addItem">New Item</button>
 
         <ul>
-          <li></li>
+          <li v-for="item in itemList" v-on:click="removeItem(item)">
+            Item {{ item }}
+          </li>
         </ul>
       </div>
     </div>
