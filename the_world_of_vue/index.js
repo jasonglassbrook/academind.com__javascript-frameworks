@@ -4,13 +4,15 @@
   Vue Config
 ***************************************/
 
-const initialName = "Jason Glassbrook";
+const initial = {
+  name: "Jason Glassbrook",
+};
 
 new Vue({
   el: "#app",
   data: {
-    initialName,
-    name: initialName,
+    initial,
+    name: initial.name,
   },
   methods: {
     changeName,
