@@ -20,15 +20,29 @@
       integrity="sha256-FZ8KwMj1F6qnNgA7bhPryVm19xKduH5OVr8u7I1tAtc="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/ramda@0.27.1/dist/ramda.min.js"
+      integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck="
+      crossorigin="anonymous"
+    ></script>
 
     <div id="app">
       <h1>The World of Vue!</h1>
+
       <div id="name-changer">
         <p>{{ name }}</p>
 
         <button v-on:click="changeName">Change Name</button>
 
         <p v-if="name != initial.name">You changed the name!</p>
+      </div>
+
+      <div id="element-adder">
+        <button v-on:click="addElement">New Element</button>
+
+        <ul>
+          <li></li>
+        </ul>
       </div>
     </div>
 
