@@ -30,7 +30,7 @@
       <h1>The World of Vue!</h1>
 
       <div id="name-changer">
-        <p>{{ name }}</p>
+        <p v-bind:class="{ 'updated': name != initial.name }">{{ name }}</p>
 
         <button v-on:click="changeName">Change Name</button>
 
@@ -41,7 +41,12 @@
         <button v-on:click="addItem">New Item</button>
 
         <ul>
-          <li v-for="item in itemList" v-on:click="removeItem(item)">
+          <li
+            v-for="item in itemList"
+            v-on:click="removeItem(item)"
+            v-bind:id="`item-${item}`"
+            v-bind:style="{ 'background-color': chooseItemColor(item) }"
+          >
             Item {{ item }}
           </li>
         </ul>

@@ -22,6 +22,7 @@ new Vue({
     changeName,
     addItem,
     removeItem,
+    chooseItemColor,
   },
 });
 
@@ -61,4 +62,8 @@ function toTitleCase(s) {
 
 function toUpperFirstCase(s) {
   return s.charAt(0).toLocaleUpperCase() + s.slice(1).toLocaleLowerCase();
+}
+
+function chooseItemColor(n) {
+  return n % 2 == 0 ? "LightSkyBlue" : "LightCoral";
 }
