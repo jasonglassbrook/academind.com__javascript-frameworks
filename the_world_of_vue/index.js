@@ -10,6 +10,13 @@ const initial = {
   itemCounter: 0,
 };
 
+Vue.component("app-greeter", {
+  data: () => ({
+    username: initial.name.split(/\W+/g)[0],
+  }),
+  template: `<p>Hello, {{ username }}!</p>`,
+});
+
 new Vue({
   el: "#app",
   data: {
