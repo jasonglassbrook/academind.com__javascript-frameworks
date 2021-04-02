@@ -29,8 +29,8 @@
     <div id="app">
       <h1>The World of Vue!</h1>
 
-      <app-greeter></app-greeter>
-      <app-greeter username="Maximilian Schwarzmüller"></app-greeter>
+      <app-greeter v-on:clickgreeter="handleClickGreeter($event)"></app-greeter>
+      <app-greeter username="Maximilian Schwarzmüller" v-on:clickgreeter="handleClickGreeter($event)"></app-greeter>
 
       <div id="name-changer">
         <p v-bind:class="{ 'updated': name != initial.name }">{{ name }}</p>

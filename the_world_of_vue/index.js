@@ -14,13 +14,14 @@ Vue.component("app-greeter", {
   props: {
     username: {
       type: String,
-      default: firstWord(initial.name),
+      default: initial.name,
     },
   },
   methods: {
     firstWord,
+    emitClickGreeter,
   },
-  template: `<p>Hello, {{ firstWord(username) }}!</p>`,
+  template: `<p v-on:click="emitClickGreeter">Hello, {{ firstWord(username) }}!</p>`,
 });
 
 new Vue({
@@ -36,6 +37,7 @@ new Vue({
     addItem,
     removeItem,
     chooseItemColor,
+    handleClickGreeter,
   },
 });
 
@@ -55,6 +57,14 @@ function addItem() {
 function removeItem(item) {
   const itemIndex = this.itemList.indexOf(item);
   this.itemList.splice(itemIndex, 1);
+}
+
+function emitClickGreeter() {
+  this.$emit("clickgreeter", this.username);
+}
+
+function handleClickGreeter(name) {
+  alert(name);
 }
 
 /***************************************
