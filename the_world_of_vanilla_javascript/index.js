@@ -1,5 +1,9 @@
 "use strict";
 
+/***************************************
+  Setup
+***************************************/
+
 // Define data.
 
 const todoList = [];
@@ -14,7 +18,9 @@ const todoListElem = document.querySelector(`ul#todo-list`);
 
 addTodoButtonElem.addEventListener("click", addTodo);
 
-// Define event actions.
+/***************************************
+  Event Handlers
+***************************************/
 
 function addTodo(event) {
   // Get user input.
@@ -52,6 +58,10 @@ function removeTodo(event) {
   // console.log(todoList);
   clickedParentElem.removeChild(clickedTodoElem);
 }
+
+/***************************************
+  Tools
+***************************************/
 
 function uniqueId() {
   const timestamp = Date.now().toString();

@@ -1,33 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The World of Vanilla JavaScript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css"
+      integrity="sha256-oQhE1gzQ/RLRlHgKfVUhrAe03FJbQLmTjY5ngEJPhdg="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-  <meta charset="utf-8">
-  <title>The World of Vanilla JavaScript</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <h1>Hello World of Vanilla JavaScript!</h1>
 
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/normalize-css@2.3.1/normalize.css"
-  integrity="sha256-oQhE1gzQ/RLRlHgKfVUhrAe03FJbQLmTjY5ngEJPhdg="
-  crossorigin="anonymous"
-  >
-  <link rel="stylesheet" href="index.css">
+    <input type="text" name="add-todo-text" id="add-todo-text" />
+    <button id="add-todo-button">Add Todo</button>
 
-</head>
+    <ul id="todo-list"></ul>
 
-<body>
-
-  <h1>Hello World of Vanilla JavaScript!</h1>
-
-  <input type="text" name="add-todo-text" id="add-todo-text">
-  <button id="add-todo-button">Add Todo</button>
-
-  <ul id="todo-list"></ul>
-
-  <script src="index.js"></script>
-
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>

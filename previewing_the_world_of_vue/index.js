@@ -1,6 +1,8 @@
 "use strict";
 
-// Setup Vue.
+/***************************************
+  Vue Config
+***************************************/
 
 new Vue({
   el: "#app",
@@ -14,7 +16,9 @@ new Vue({
   },
 });
 
-// Define event actions.
+/***************************************
+  Event Handlers
+***************************************/
 
 function addTodo() {
   // Get user input.
@@ -36,13 +40,15 @@ function removeTodo(todo) {
   // Get todo item.
   const todoId = todo.id;
   // Remove todo item from todo list data and element.
-  const todoIndex = this.todoList.findIndex(
-    (item) => item.id === todoId
-  );
+  const todoIndex = this.todoList.findIndex((item) => item.id === todoId);
   // console.log(todoIndex);
   this.todoList.splice(todoIndex, 1);
   // console.log(this.todoList);
 }
+
+/***************************************
+  Tools
+***************************************/
 
 function uniqueId() {
   const timestamp = Date.now().toString();
